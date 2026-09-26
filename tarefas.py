@@ -18,12 +18,25 @@ def listar_tarefas(tarefas):
         print(f'{indice}. Título: {tarefa['Título']} | Status: {concluido} ')
     
   
-def editar_tarefa():
-    pass
+def editar_tarefa(tarefas):
+    listar_tarefas(tarefas)
+    indice = int(input('Digite o número da tarefa que deseja editar:')) - 1
+    if 0 <= indice < len(tarefas):
+        titulo_ou_status = input('Você deseja editar o título ou o status da tarefa?\n1 - Editar Título\n2- Editar Status: ').lower().strip()
+        if titulo_ou_status == '1':
+            novo_titulo = input('Novo título: ')
+            tarefas[indice]['Título'] = novo_titulo
+            print('tarefa editada com sucesso!')
+        elif titulo_ou_status == '2':
+            tarefas[indice]['concluida?'] = not tarefas[indice]['concluida?']
+            print('Status atualizado com sucesso!')
+    else:
+        print("número inválido.")
 
 def excluir_tarefa():
     pass
 
 criar_tarefa()
+editar_tarefa(lista_tarefas)
 listar_tarefas(lista_tarefas)
 
