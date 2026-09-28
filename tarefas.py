@@ -33,10 +33,14 @@ def editar_tarefa(tarefas):
     else:
         print("número inválido.")
 
-def excluir_tarefa():
-    pass
+def excluir_tarefa(tarefas):
+    listar_tarefas(tarefas)
+    indice = int(input('Digite o número da tarefa que deseja excluir:')) - 1
+    if 0 <= indice < len(tarefas):
+        tarefas.remove(tarefas[indice])
+        print('Tarefa removida!')
+    else:
+        print('Número inválido!')
 
-criar_tarefa()
-editar_tarefa(lista_tarefas)
-listar_tarefas(lista_tarefas)
+
 
