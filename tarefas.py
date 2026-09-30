@@ -1,16 +1,17 @@
-lista_tarefas = []
+from persistencia import carregar_tarefas, salvar_tarefas
 
 
-def criar_tarefa():
+def criar_tarefa(tarefas):
     while True:
         nome_tarefa = str(input('Digite a tarefa que gostaria de adicionar: '))
         concluida = False
-        lista_tarefas.append({'Título': nome_tarefa, 'concluida?': concluida})
+        tarefas.append({'Título': nome_tarefa, 'concluida?': concluida})
         adicionar_novamente = input('Deseja adicionar mais uma tarefa?(s/n)')
         if adicionar_novamente.lower().strip() == 's':
             continue
         else:
-            return lista_tarefas
+            salvar_tarefas(tarefas)
+            return tarefas
 
 def listar_tarefas(tarefas):
     for indice, tarefa in enumerate(tarefas, start=1):
@@ -32,6 +33,7 @@ def editar_tarefa(tarefas):
             print('Status atualizado com sucesso!')
     else:
         print("número inválido.")
+    salvar_tarefas(tarefas)
 
 def excluir_tarefa(tarefas):
     listar_tarefas(tarefas)
@@ -41,6 +43,7 @@ def excluir_tarefa(tarefas):
         print('Tarefa removida!')
     else:
         print('Número inválido!')
+    salvar_tarefas(tarefas)
 
 
 
